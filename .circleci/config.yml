@@ -1,9 +1,5 @@
-version: 2.1
-orbs:
-  aws-s3: circleci/aws-s3@2.0.0
-workflows:  
+jobs:
   build:
-    jobs:
     docker:
       - image: 'cimg/python:3.6'
     steps:
@@ -22,3 +18,6 @@ workflows:
           arguments: '--dryrun'
           from: bucket/build_asset.txt
           to: 's3://my-s3-bucket-name'
+orbs:
+  aws-s3: circleci/aws-s3@2.0.0
+version: 2.1
