@@ -1,8 +1,9 @@
 version: 2.1
 orbs:
   aws-s3: circleci/aws-s3@2.0.0
-  jobs:
+workflows:  
   build:
+    jobs:
     docker:
       - image: 'cimg/python:3.6'
     steps:
