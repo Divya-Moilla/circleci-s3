@@ -13,7 +13,7 @@ jobs:
           aws-region: AWS_REGION
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
           from: bucket
-          to: 's3://divyabu/prefix'
+          to: 's3://divyabu'
       - aws-s3/copy:
           arguments: '--dryrun'
           from: bucket/build_asset.txt
