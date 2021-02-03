@@ -4,7 +4,7 @@ jobs:
       - image: 'cimg/python:3.6'
     steps:
       - checkout
-      - run: touch divya.sh && echo "adding lines to divya file" > divya.sh
+      - run: mkdir test && echo "adding lines to divya file" > test/divya.sh
       - aws-s3/sync:
           arguments: |
             --acl public-read \
@@ -12,11 +12,11 @@ jobs:
           aws-access-key-id: AWS_ACCESS_KEY_ID
           aws-region: AWS_REGION
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
-          from: divya.sh
-          to: 's3://divyabu'
+          from: test
+          to: 's3://divyabu/prefix'
       - aws-s3/copy:
           arguments: '--dryrun'
-          from: divya.sh
+          from: test/divya.sh
           to: 's3://divyabu'
 orbs:
   aws-s3: circleci/aws-s3@2.0.0
