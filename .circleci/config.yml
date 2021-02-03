@@ -16,7 +16,7 @@ jobs:
           to: 's3://divyabu'
       - aws-s3/copy:
           arguments: '--dryrun'
-          from: bucket/build_asset.txt
+          from: divya.sh
           to: 's3://divyabu'
 orbs:
   aws-s3: circleci/aws-s3@2.0.0
