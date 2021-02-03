@@ -4,7 +4,7 @@ jobs:
       - image: 'cimg/python:3.6'
     steps:
       - checkout
-      - run: mkdir bucket && echo "lorem ipsum" > bucket/build_asset.txt
+      - run: touch divya.sh && echo "adding lines to divya file" > divya.sh
       - aws-s3/sync:
           arguments: |
             --acl public-read \
