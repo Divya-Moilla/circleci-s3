@@ -4,7 +4,7 @@ jobs:
       - image: 'cimg/python:3.6'
     steps:
       - checkout
-      - run: mkdir test && echo "adding lines to divya file" > test/divya.sh
+      - run: touch divya.sh && echo "adding lines to divya file" > divya.sh
       - aws-s3/sync:
           arguments: |
             --acl public-read \
@@ -16,7 +16,7 @@ jobs:
           to: 's3://divyabu/prefix'
       - aws-s3/copy:
           arguments: '--dryrun'
-          from: test/divya.sh
+          from: divya.sh
           to: 's3://divyabu'
 orbs:
   aws-s3: circleci/aws-s3@2.0.0
