@@ -4,4 +4,20 @@ jobs:
       - image: 'cimg/python:3.6'
     steps:
       - checkout
-      - run: npm install && npm run build
+      - run: mkdir divya && echo "this is for testing" > divya/test.txt
+      - aws-s3/sync:
+          arguments: |
+            --acl public-read \
+            --cache-control "max-age=86400"
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-region: AWS_REGION
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          from: divya
+          to: 's3://divyabu/prefix'
+      - aws-s3/copy:
+          arguments: '--dryrun'
+          from: divya/test.txt
+          to: 's3://divyabu'
+orbs:
+  aws-s3: circleci/aws-s3@2.0.0
+version: 2.1
