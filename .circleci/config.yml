@@ -18,6 +18,3 @@ jobs:
           arguments: '--dryrun'
           from: divya/test.txt
           to: 's3://divyabu'
-orbs:
-  aws-s3: circleci/aws-s3@2.0.0
-version: 2.1
